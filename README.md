@@ -15,16 +15,16 @@ sudo ln -s /snap/bin/heroku /usr/local/bin/heroku
 1. created account in heroku
 1. i created code in [github](https://github.com/g3n1k/f4b3l10)
 1. clone
-````
-$ git clone https://github.com/g3n1k/f4b3l10.git
-$ cd f4b3l10
-````
+    ````
+    $ git clone https://github.com/g3n1k/f4b3l10.git
+    $ cd f4b3l10
+    ````
 1. add composer.json file
-````
-$ touch composer.json
-$ echo "{ }" >> composer.json
+    ````
+    $ touch composer.json
+    $ echo "{ }" >> composer.json
 
-````
+    ````
 1. add some code
     ````
     $ touch index.php

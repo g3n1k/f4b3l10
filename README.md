@@ -80,3 +80,11 @@ using postgres as db, becouser its free, we didnt need to input credit card or a
     ````
 1. test with [DBeaver](https://dbeaver.io/)
 ![DBeaver](readme/pg-test-heroku.png "test pg with dbeaver")
+
+## the flow and db
+first flow in [draw.io](https://drive.google.com/file/d/1GkqPpBcGJcMTRZfMRgRz5-CQbPDFmYSo/view?usp=sharing)  
+ ![code flow](readme/flow.png "flow code")
+
+db structure  
+ ![db structure](readme/f4b3l10-db.png "db structure")
+

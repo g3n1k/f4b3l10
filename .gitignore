@@ -1,0 +1,3 @@
+sys/db/*
+sys/tmp/*
+!*.gitkeep

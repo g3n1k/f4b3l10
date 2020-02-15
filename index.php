@@ -312,4 +312,19 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+
+$template_path = 'templates';
+	
+if (realpath($template_path) !== FALSE)
+{
+    $template_path = realpath($template_path).'/';
+}
+
+// ensure there's a trailing slash
+$template_path = rtrim($template_path, '/').'/';
+
+
+define('TEMPLATE_DIR', $template_path);
+
+
 require_once BASEPATH.'core/CodeIgniter.php';

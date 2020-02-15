@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php-apache:
+    # restart: always
+    build:
+      context: ./sys/php
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/var/www/html
+      - ./sys/logs/apache2:/var/log/apache2
+      - ./sys/tmp:/tmp
+    env_file:
+      - ./sys/database.env
+  
+  
+#   postgres:
+#     image: "postgres"
+#     # restart: always
+#     volumes:
+#       - ./sys/db:/var/lib/postgresql/data/   
+#     ports:
+#       - 5432:5432
+#     env_file:
+#       - ./sys/database.env

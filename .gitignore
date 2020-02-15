@@ -1,3 +1,5 @@
 sys/db/*
 sys/tmp/*
+sys/logs/apache2/*
+sys/logs/mariadb/*
 !*.gitkeep

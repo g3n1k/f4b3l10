@@ -101,7 +101,9 @@ if(! function_exists('full_url')){
 
 	function full_url()	{
 
-		$s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+        $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on");
+        
+        $s = $s ? "s" : "";
 
 		$sp = strtolower($_SERVER["SERVER_PROTOCOL"]);
 

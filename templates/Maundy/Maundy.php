@@ -40,13 +40,13 @@
           <div class="social">
             <ul>
               <li>
-                <a href="<?php echo base_url().'fabs/_1';?>"><i class="fa fa-share-alt"></i></a>
+                <a href="<?php echo base_url().'fabs/page_1';?>"><i class="fa fa-share-alt"></i></a>
               </li>
               <li>
-                <a href="<?php echo base_url().'fabs/_2';?>"><i class="fa fa-server"></i></a>
+                <a href="<?php echo base_url().'fabs/page_2';?>"><i class="fa fa-server"></i></a>
               </li>
               <li>
-                <a href="<?php echo base_url().'fabs/_3';?>"><i class="fa fa-sellsy"></i></a>
+                <a href="<?php echo base_url().'fabs/page_3';?>"><i class="fa fa-sellsy"></i></a>
               </li>
             </ul>
           </div>

@@ -5,6 +5,7 @@ class Api extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('foo/foo_m');
     }
 
     // first scrap
@@ -28,8 +29,7 @@ class Api extends MX_Controller
             // ["time"] => string(19) "2020-02-16 20:41:10"
 
             // apakah sudah ada di table
-            $this->load->model('foo/foo_m');
-
+            
 
             $_url_data = array(
                 'id'    => $_['id'],
@@ -67,9 +67,31 @@ class Api extends MX_Controller
         echo json_encode($_status);
     }
 
-    // update all data
+    // update price all
     function update(){
 
+        $_urls = $this->foo_m->__select('_url', 'url', []);
+
+        $this->load->helper('scrap');
+
+        $c = 0;
+
+        foreach($_urls as $v=>$_u){
+            
+            $_ = fabelio($_u->url);
+
+            $_price_data = array(
+                'id'    => $_['id'],
+                'time'  => $_['time'],
+                'price' => $_['price']
+            );
+
+            $this->foo_m->__insert('_price', $_price_data);
+
+            $c++;
+        }
+
+        echo 'success update '.$c.' data';  
     }
 
     // get all list
@@ -102,11 +124,14 @@ class Api extends MX_Controller
             $sub_array = array();
             
             $sub_array[] = ++$c;
-            $sub_array[] = $row->title;
+            $_img = '<a href="'.$row->image.'"><img src="'.$row->image.'" style="max-height:100px"/></a>';
+            $_url = '<b>'.$row->title.'</b>';
+            $sub_array[] = $_img.'<br />'.$_url;
             $sub_array[] = $row->price;
-            $sub_array[] = $row->image;
             
-            $_a = '<button type="checkbox" class="btn btn-info btn-sm" onclick="show_data('.$row->id.');"><i class="fa fa-edit"></button>';
+            $_a = '<a href="'.$row->url.'" class="btn btn-sm btn-info"><icon class="fa fa-eye"></icon></a>';
+            $_a .= '<button onclick="load_image(\''.$row->image.'\');false;" class="btn btn-sm btn-info"><icon class="fa fa-eye"></icon></button>';
+            $_a .= '<button type="checkbox" class="btn btn-info btn-sm" onclick="show_data('.$row->id.');"><i class="fa fa-edit"></button>';
 
             $sub_array[] = $_a;
             
@@ -126,8 +151,9 @@ class Api extends MX_Controller
     }
 
     // get single product history price set templating
-    function getprice($id, $template){
+    function getprice($id, $template = ''){
 
+        
     }
 }
 	

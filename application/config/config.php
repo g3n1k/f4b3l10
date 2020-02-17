@@ -529,4 +529,4 @@ $config['modules_locations'] = array(
     APPPATH.'modules/' => '../modules/'
 );
 
-$config['template']         = 'Maundy';
+$config['template']         = 'NiceAdmin';

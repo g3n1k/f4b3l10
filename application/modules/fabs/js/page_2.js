@@ -26,3 +26,8 @@ $(document).ready(function(){
 
 });
 
+function load_image(_url){
+
+    $('#image-modal').attr('src', _url);
+    $("#myModal").modal()
+}

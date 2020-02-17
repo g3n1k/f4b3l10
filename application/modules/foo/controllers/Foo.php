@@ -11,7 +11,7 @@ class Foo extends MX_Controller {
 	
 	public function index($page = 1){
 		
-		$data = ['word'=>"hello world"];
+		$data = ['word'=>"hello world ". getenv('POSTGRES_USER')];
 		
         $this->masterpage->addContentPage('foo_index', 'contentmain', $data);
 	

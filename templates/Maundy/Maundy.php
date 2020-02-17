@@ -18,6 +18,7 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  <script> function base_url() { return "<?php echo base_url();?>" }; </script>
 </head>
 
 <body>
@@ -28,15 +29,9 @@
           <img src="<?php echo template_dir(); ?>img/logo.png" alt="logo" width="150">
           <h2><?php echo @if_empty($title, 'Please Input fabelio url product');?></h2>
         </div>
-
-        <mp:Contentmain />
-
-        <div class="subcription-info text-center">
-          <form class="subscribe_form" action="#" method="post">
-            <input required="" value="" placeholder="Enter url..." class="email w-75" id="email" name="email" type="email">
-            <input class="subscribe" name="email" value="Send!" type="submit">
-          </form>
-        </div>
+        <mp:Contentmain />        
+        
+        
       </div>
     </div>
     <section>
@@ -45,13 +40,13 @@
           <div class="social">
             <ul>
               <li>
-                <a href="<?php echo base_url().'fabs/page_1';?>"><i class="fa fa-facebook"></i></a>
+                <a href="<?php echo base_url().'fabs/_1';?>"><i class="fa fa-share-alt"></i></a>
               </li>
               <li>
-                <a href="<?php echo base_url().'fabs/page_2';?>"><i class="fa fa-twitter"></i></a>
+                <a href="<?php echo base_url().'fabs/_2';?>"><i class="fa fa-server"></i></a>
               </li>
               <li>
-                <a href="<?php echo base_url().'fabs/page_3';?>"><i class="fa fa-linkedin"></i></a>
+                <a href="<?php echo base_url().'fabs/_3';?>"><i class="fa fa-sellsy"></i></a>
               </li>
             </ul>
           </div>
@@ -66,7 +61,7 @@
   <script src="<?php echo template_dir(); ?>js/jquery.countdown.min.js"></script>
   <script src="<?php echo template_dir(); ?>js/wow.js"></script>
   <script src="<?php echo template_dir(); ?>js/custom.js"></script>
-  <!-- <script src="<?php echo template_dir(); ?>contactform/contactform.js"></script> -->
+  <?php echo @if_empty($include_script,'<meta name="noscript">'); ?>
 
 </body>
 

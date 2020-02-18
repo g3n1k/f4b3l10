@@ -124,14 +124,15 @@ class Api extends MX_Controller
             $sub_array = array();
             
             $sub_array[] = ++$c;
-            $_img = '<a href="'.$row->image.'"><img src="'.$row->image.'" style="max-height:100px"/></a>';
             $_url = '<b>'.$row->title.'</b>';
-            $sub_array[] = $_img.'<br />'.$_url;
-            $sub_array[] = $row->price;
+            $_img = '<a href="'.$row->image.'"><img src="'.$row->image.'" style="max-height:100px"/></a>';
+            $sub_array[] = $_url;
+            $sub_array[] = $_img;
+            $sub_array[] = number_format($row->price);
             
-            $_a = '<a href="'.$row->url.'" class="btn btn-sm btn-info"><icon class="fa fa-eye"></icon></a>';
-            $_a .= '<button onclick="load_image(\''.$row->image.'\');false;" class="btn btn-sm btn-info"><icon class="fa fa-eye"></icon></button>';
-            $_a .= '<button type="checkbox" class="btn btn-info btn-sm" onclick="show_data('.$row->id.');"><i class="fa fa-edit"></button>';
+            $_a = '<a href="'.$row->url.'" class="btn btn-sm btn-primary"><icon class="fa fa-home"></icon></a> ';
+            $_a .= '<button onclick="load_image(\''.$row->image.'\');false;" class="btn btn-sm btn-success"><icon class="fa fa-eye"></icon></button> ';
+            $_a .= '<a class="btn btn-info btn-sm" href="'.base_url().'fabs/page_3/'.$row->id.'"><i class="fa fa-edit"></button> ';
 
             $sub_array[] = $_a;
             
@@ -151,9 +152,41 @@ class Api extends MX_Controller
     }
 
     // get single product history price set templating
-    function getprice($id, $template = ''){
+    function getprice($id = false, $date = false){
 
+       $_url = $this->foo_m->__select('_url', '*', ['id'=>$id], false); 
+
+       if(!$date) $date = date('Y-m-d'); 
+
+       $this->load->model('fabs_m');
+       
+       $_prices = $this->fabs_m->get_prices($id, $date);
+
+       // MULAI isi disini
+		$data['title'] = $_url->title;
+		
+        $data['subtitle'] = $date;
         
+        // list hours
+        $hours = [];
+
+        for ($i = 0; $i<24; $i++) $hours[] = $i;
+
+        $data['xaxis_categories'] = json_encode($hours);
+
+        $_data = [];
+
+        foreach($_prices as $_ps=>$_p) $_data[] = (int) $_p->price;
+
+        $_series = []; 
+
+        $_series[] = array('name'=>$_url->title,  'data'=> $_data, 'type' => 'spline');
+
+        $data['series'] = json_encode($_series);
+
+        debug($_prices);
+
+        $this->load->view('chart_axis', $data);
     }
 }
 	

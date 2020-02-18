@@ -52,16 +52,30 @@ class Fabs extends MX_Controller {
 		$this->masterpage->show( );
     }
 
-    public function page_3(){
+    public function page_3($url_id = false){
+
+        $data['include_script'] = inc_script(
+			array(
+				"includes/highcharts/highcharts.js",
+				"includes/highcharts/highcharts-3d.js",
+				"includes/highcharts/exporting.js",
+				"includes/highcharts/export-data.js",
+                "application/modules/fabs/js/highcharts_opt_default.js",
+                "application/modules/fabs/js/page_3.js"
+            )
+        );
     
         $data['title'] = 'Fabelio Price History';
         
+        $data['url_id'] = $url_id ? $url_id : '';
+
         $this->masterpage->addContentPage('page_three', 'contentmain', $data);
 	
 		$this->masterpage->show( );
     }
 
     public function test(){
+        
         $this->load->helper('scrap');
 
         $_ = fabelio();

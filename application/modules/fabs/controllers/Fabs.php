@@ -52,7 +52,7 @@ class Fabs extends MX_Controller {
 		$this->masterpage->show( );
     }
 
-    public function page_3($url_id = false){
+    public function page_3($url_id = false, $date=null){
 
         $data['include_script'] = inc_script(
 			array(
@@ -61,6 +61,9 @@ class Fabs extends MX_Controller {
 				"includes/highcharts/exporting.js",
 				"includes/highcharts/export-data.js",
                 "application/modules/fabs/js/highcharts_opt_default.js",
+                "includes/datepicker/bootstrap-datepicker.js",
+				"includes/datepicker/locales/bootstrap-datepicker.id.js",
+                
                 "application/modules/fabs/js/page_3.js"
             )
         );
@@ -68,6 +71,8 @@ class Fabs extends MX_Controller {
         $data['title'] = 'Fabelio Price History';
         
         $data['url_id'] = $url_id ? $url_id : '';
+
+        $data['date']   = $date ? $date : date('Y-m-d');
 
         $this->masterpage->addContentPage('page_three', 'contentmain', $data);
 	

@@ -101,7 +101,7 @@ class Api extends MX_Controller
             'table' => "_url k",
             'column_select' => "k.id, k.url, k.title, k.time, k.price, i.image",
             'column_search'	=> array('k.title'),
-            'column_order' => array("k.id", "k.title", "k.time"),
+            'column_order' => array(null, "k.id", "k.title", "k.time"),
             'default_order' => array('k.time', 'desc'),
             //'where' => $_w,
             'table_join' => array(
@@ -124,17 +124,15 @@ class Api extends MX_Controller
             $sub_array = array();
             
             $sub_array[] = ++$c;
-            $_url = '<b>'.$row->title.'</b>';
-            $_img = '<a href="'.$row->image.'"><img src="'.$row->image.'" style="max-height:100px"/></a>';
-            $sub_array[] = $_url;
-            $sub_array[] = $_img;
-            $sub_array[] = number_format($row->price);
             
-            $_a = '<a href="'.$row->url.'" class="btn btn-sm btn-primary"><icon class="fa fa-home"></icon></a> ';
-            $_a .= '<button onclick="load_image(\''.$row->image.'\');false;" class="btn btn-sm btn-success"><icon class="fa fa-eye"></icon></button> ';
-            $_a .= '<a class="btn btn-info btn-sm" href="'.base_url().'fabs/page_3/'.$row->id.'"><i class="fa fa-edit"></button> ';
+            $_url = '<a href="'.$row->url.'" ><b>'.$row->title.'</b></a> ';
+            $sub_array[] = $_url;
+            
+            $_img = '<a onclick="load_image(\''.$row->image.'\');false;"><img src="'.$row->image.'" style="max-width:100px;"/></a> ';
+            $sub_array[] = $_img;
 
-            $sub_array[] = $_a;
+            $_price = '<a href="'.base_url().'fabs/page_3/'.$row->id.'">'.number_format($row->price).'</button> ';
+            $sub_array[] = $_price;
             
             $data[] = $sub_array;  
         }

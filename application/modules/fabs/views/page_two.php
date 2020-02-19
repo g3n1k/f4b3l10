@@ -13,7 +13,6 @@
             <th>Title</th>
             <th>Image</th>
             <th>price</th>
-            <th>Action</th>
         </tr>
     </thead>
 </table>
